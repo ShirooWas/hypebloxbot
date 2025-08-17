@@ -2,7 +2,6 @@ import discord
 import os
 from dotenv import load_dotenv
 
-# Load environment variables dari .env
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -14,6 +13,14 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f"✅ Logged in as {client.user}")
 
+    # Ganti EMOJI_ID_VERIFY dengan ID emoji :verify:
+    activity = discord.Activity(
+        type=discord.ActivityType.watching,
+        name="over 10M+ IDR secure transactions <a:Reserved:1395938684867707061>"
+    )
+
+    await client.change_presence(status=discord.Status.online, activity=activity)
+
 @client.event
 async def on_message(message):
     if message.author.bot:
@@ -22,17 +29,11 @@ async def on_message(message):
     content = message.content.lower()
 
     if content.startswith("+vouch robux"):
-        try:
-            await message.add_reaction("<:robux:1406669479898775663>")
-            await message.add_reaction("<:HypeBloxSociety:1406659611909423296>")
-        except Exception as e:
-            print(f"Gagal react robux: {e}")
+        await message.add_reaction("<:robux:EMOJI_ID_ROBUX>")
+        await message.add_reaction("<:HypeBloxSociety:EMOJI_ID_HYPEBLOX>")
 
     elif content.startswith("+vouch limited"):
-        try:
-            await message.add_reaction("<:diamantee:1406669782484385812>")
-            await message.add_reaction("<:HypeBloxSociety:1406659611909423296>")
-        except Exception as e:
-            print(f"Gagal react limited: {e}")
+        await message.add_reaction("<:diamantee:EMOJI_ID_DIAMANTEE>")
+        await message.add_reaction("<:HypeBloxSociety:EMOJI_ID_HYPEBLOX>")
 
 client.run(TOKEN)
