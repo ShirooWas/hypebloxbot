@@ -16,7 +16,7 @@ async def on_ready():
     # Ganti EMOJI_ID_VERIFY dengan ID emoji :verify:
     activity = discord.Activity(
         type=discord.ActivityType.watching,
-        name="over 10M+ IDR secure transactions <a:Reserved:1395938684867707061>"
+        name="over 10M+ IDR secure transactions"
     )
 
     await client.change_presence(status=discord.Status.online, activity=activity)
@@ -37,3 +37,4 @@ async def on_message(message):
         await message.add_reaction("<:HypeBloxSociety:EMOJI_ID_HYPEBLOX>")
 
 client.run(TOKEN)
+
