@@ -12,13 +12,10 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f"✅ Logged in as {client.user}")
-
-    # Ganti EMOJI_ID_VERIFY dengan ID emoji :verify:
     activity = discord.Activity(
         type=discord.ActivityType.watching,
-        name="over 10M+ IDR secure transactions"
+        name="over 10M+ IDR secure transactions <a:Reserved:1395938684867707061>"
     )
-
     await client.change_presence(status=discord.Status.online, activity=activity)
 
 @client.event
@@ -29,12 +26,21 @@ async def on_message(message):
     content = message.content.lower()
 
     if content.startswith("+vouch robux"):
-        await message.add_reaction("<:robux:EMOJI_ID_ROBUX>")
-        await message.add_reaction("<:HypeBloxSociety:EMOJI_ID_HYPEBLOX>")
+        robux_emoji = discord.utils.get(message.guild.emojis, name="robux")
+        hypeblox_emoji = discord.utils.get(message.guild.emojis, name="HypeBloxSociety")
+
+        if robux_emoji:
+            await message.add_reaction(robux_emoji)
+        if hypeblox_emoji:
+            await message.add_reaction(hypeblox_emoji)
 
     elif content.startswith("+vouch limited"):
-        await message.add_reaction("<:diamantee:EMOJI_ID_DIAMANTEE>")
-        await message.add_reaction("<:HypeBloxSociety:EMOJI_ID_HYPEBLOX>")
+        diamantee_emoji = discord.utils.get(message.guild.emojis, name="diamantee")
+        hypeblox_emoji = discord.utils.get(message.guild.emojis, name="HypeBloxSociety")
+
+        if diamantee_emoji:
+            await message.add_reaction(diamantee_emoji)
+        if hypeblox_emoji:
+            await message.add_reaction(hypeblox_emoji)
 
 client.run(TOKEN)
-
