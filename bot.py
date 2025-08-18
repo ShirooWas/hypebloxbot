@@ -14,7 +14,7 @@ async def on_ready():
     print(f"✅ Logged in as {client.user}")
     activity = discord.Activity(
         type=discord.ActivityType.watching,
-        name="over 10M+ IDR secure transactions <a:Reserved:1395938684867707061>"
+        name="over 10M+ IDR secure transactions"
     )
     await client.change_presence(status=discord.Status.online, activity=activity)
 
@@ -156,3 +156,4 @@ async def on_message(message):
         await message.channel.send(embed=embed)
 
 client.run(TOKEN)
+
