@@ -155,5 +155,16 @@ async def on_message(message):
         )
         await message.channel.send(embed=embed)
 
-client.run(TOKEN)
+    # QRIS
+    elif content.startswith("!qris"):
+        embed = discord.Embed(
+            title="📲 QRIS PAYMENT",
+            description="Scan QR di bawah untuk melakukan pembayaran via QRIS.",
+            color=discord.Color.orange()
+        )
+        embed.set_image(
+            url="https://media.discordapp.net/attachments/1401733300225314946/1408387554595831859/IMG_9026.png?ex=68a98e9f&is=68a83d1f&hm=6ceabd95da99980dc9f53bf847be17411ae4e8f2a5825078f834b6669dce9181&=&format=webp&quality=lossless&width=669&height=943"
+        )
+        await message.channel.send(embed=embed)
 
+client.run(TOKEN)
